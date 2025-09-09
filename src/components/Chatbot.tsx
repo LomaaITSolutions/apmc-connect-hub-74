@@ -192,15 +192,15 @@ const Chatbot = () => {
 
           <CardContent className="flex-1 flex flex-col p-0">
             {/* Messages Area */}
-            <ScrollArea className="flex-1 p-4">
-              <div className="space-y-4">
+            <ScrollArea className="flex-1 p-4 overflow-x-hidden">
+              <div className="space-y-4 max-w-full">
                 {messages.map((message) => (
                   <div
                     key={message.id}
                     className={`flex ${message.sender === "user" ? "justify-end" : "justify-start"}`}
                   >
                     <div
-                      className={`max-w-[80%] rounded-lg p-3 break-words overflow-wrap-anywhere ${
+                      className={`max-w-[75%] w-fit rounded-lg p-3 break-words overflow-hidden ${
                         message.sender === "user"
                           ? "bg-medical-teal text-white"
                           : "bg-muted text-foreground"
