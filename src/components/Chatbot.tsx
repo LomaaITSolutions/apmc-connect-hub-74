@@ -200,7 +200,7 @@ const Chatbot = () => {
                     className={`flex ${message.sender === "user" ? "justify-end" : "justify-start"}`}
                   >
                     <div
-                      className={`max-w-[80%] rounded-lg p-3 ${
+                      className={`max-w-[80%] rounded-lg p-3 break-words overflow-wrap-anywhere ${
                         message.sender === "user"
                           ? "bg-medical-teal text-white"
                           : "bg-muted text-foreground"
@@ -213,8 +213,8 @@ const Chatbot = () => {
                         {message.sender === "user" && (
                           <User size={16} className="mt-1 text-white" />
                         )}
-                        <div className="flex-1">
-                          <p className="text-sm whitespace-pre-line break-words">{message.text}</p>
+                         <div className="flex-1 min-w-0">
+                          <p className="text-sm whitespace-pre-line break-words overflow-hidden">{message.text}</p>
                           <p className={`text-xs mt-1 opacity-70`}>
                             {message.timestamp.toLocaleTimeString([], {
                               hour: "2-digit",
