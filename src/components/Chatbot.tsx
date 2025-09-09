@@ -97,6 +97,7 @@ const Chatbot = () => {
       console.log("Message is empty, not sending");
       return;
     }
+    setInputMessage("");
 
     const userMessage: Message = {
       id: Date.now().toString(),
@@ -126,6 +127,7 @@ const Chatbot = () => {
 
   const handleQuickAction = (keyword: string) => {
     setInputMessage(keyword);
+    setInputMessage("")
     setTimeout(() => {
       const userMessage: Message = {
         id: Date.now().toString(),
@@ -193,7 +195,7 @@ const Chatbot = () => {
           <CardContent className="flex-1 flex flex-col p-0">
             {/* Messages Area */}
             <ScrollArea className="flex-1 p-4">
-              <div className="space-y-4">
+              <div className={`space-y-4 overflow-scroll ${messages.length > 1 ? "h-[20rem]" : "h-auto"}`}>
                 {messages.map((message) => (
                   <div
                     key={message.id}
