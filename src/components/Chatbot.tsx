@@ -92,7 +92,11 @@ const Chatbot = () => {
   };
 
   const handleSendMessage = async () => {
-    if (!inputMessage.trim()) return;
+    console.log("Send message clicked, input:", inputMessage);
+    if (!inputMessage.trim()) {
+      console.log("Message is empty, not sending");
+      return;
+    }
 
     const userMessage: Message = {
       id: Date.now().toString(),
@@ -101,6 +105,7 @@ const Chatbot = () => {
       timestamp: new Date(),
     };
 
+    console.log("Adding user message:", userMessage);
     setMessages(prev => [...prev, userMessage]);
     setInputMessage("");
     setIsTyping(true);
@@ -147,7 +152,9 @@ const Chatbot = () => {
   };
 
   const handleKeyPress = (e: React.KeyboardEvent) => {
+    console.log("Key pressed:", e.key);
     if (e.key === "Enter") {
+      console.log("Enter key pressed, calling handleSendMessage");
       handleSendMessage();
     }
   };
@@ -263,7 +270,10 @@ const Chatbot = () => {
               <div className="flex gap-2">
                 <Input
                   value={inputMessage}
-                  onChange={(e) => setInputMessage(e.target.value)}
+                  onChange={(e) => {
+                    console.log("Input changed:", e.target.value);
+                    setInputMessage(e.target.value);
+                  }}
                   onKeyPress={handleKeyPress}
                   placeholder="Ask me anything about APMC services..."
                   className="flex-1"
