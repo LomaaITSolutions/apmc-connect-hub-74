@@ -214,7 +214,7 @@ const Chatbot = () => {
                           <User size={16} className="mt-1 text-white" />
                         )}
                         <div className="flex-1">
-                          <p className="text-sm whitespace-pre-line">{message.text}</p>
+                          <p className="text-sm whitespace-pre-line break-words">{message.text}</p>
                           <p className={`text-xs mt-1 opacity-70`}>
                             {message.timestamp.toLocaleTimeString([], {
                               hour: "2-digit",
